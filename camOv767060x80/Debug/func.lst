@@ -1,0 +1,108 @@
+TI ARM Assembler Unix v5.2.2 Tue Jun  2 02:20:16 2015
+
+Tools Copyright (c) 1996-2015 Texas Instruments Incorporated
+../func.s                                                            PAGE    1
+
+       1                    ;cabezera del codigo ensamblador*************************************************;
+       2                                            
+       3                                            .cdecls         C, "project0.h"
+       4                                            
+       5                                            
+       6 00000000                                   .data
+       7                                            .align          4
+       8                                            ;.global        cont
+       9                                            .align          2
+      10                                            
+      11 00000000                                   .thumb
+      12 00000000                                   .text
+      13 00000000 00CB7355  aux             .field          13333333,32     
+      14 00000004 400593FC  PIN_B           .field          0x400593fc,32 ;puerto B
+      15 00000008 40006414  INTRIS_C5       .field          0x40006414,32 ;mascara de interrupcion PinC5
+      16 0000000c 4000641C  INTICR_C5       .field          0x4000641c,32 ;registro para limpiar banderas de interrupcion PinC5
+      17 00000010 40025008  porF1           .field          0x40025008
+      18                                            .global         delay_s
+      19                                            .global         camaraArray
+      20                                            .global         prueba
+      21                                            
+      22                                            
+      23                    ;codigo de funcion delay ~1 segundo***************************************************;
+      24                    delay_s: .asmfunc
+      25 00000014 B420                              push            {r5} ; [ORIG 16-BIT INS]
+      26 00000016 5018F85F                          ldr                     r5,aux  ; [KEEP 32-BIT INS]
+      27 0000001a           continua_delay_s:       
+      28 0000001a 1E6D                              subs            r5,r5,#1                 ; [ORIG 16-BIT INS]
+      29 0000001c D1FD                              bne                     continua_delay_s ; [ORIG 16-BIT INS]
+      30 0000001e BC20                              pop             {r5} ; [ORIG 16-BIT INS]
+      31 00000020 4770                              bx                      lr ; [ORIG 16-BIT INS]
+      32                                            
+      33                    ;subrutina para esperar señal********************************************************;
+      34 00000022           camaraArray:
+      35 00000022 B5FE                              push            {r1-r7,lr};guardar registros ; [ORIG 16-BIT INS]
+      36                                            ;registro r0 = direccion de arreglo
+      37                                            
+      38                                            ;carga registros de interrupcion GPIOC, GPIOF y puerto B
+      39 00000024 1020F85F                          ldr                     r1,INTRIS_C5 ; [KEEP 32-BIT INS]
+      40 00000028 2020F85F                          ldr                     r2,INTICR_C5 ; [KEEP 32-BIT INS]
+      41 0000002c 302CF85F                          ldr                     r3,PIN_B ; [KEEP 32-BIT INS]
+      42                                            ;carga constantes
+      43 00000030 5516F44F                          mov                     r5,#9600        ;valor para compara 60*80*2 bytes ; [K
+      44 00000034 0400F04F                          mov                     r4,#0           ;variable a incrementar para apuntador
+      45                                            
+      46 00000038 0720F04F                          mov                     r7,#0x20        ;reinicia bandera de reset para pin C5
+      47 0000003c 6017                              str                     r7,[r2] ; [ORIG 16-BIT INS]
+      48                                            
+      49 0000003e           bucleCamaraArray:                               
+      50                                            ;verifica pclk(relog camara), si falso, repite verificacion
+      51 0000003e 680F                              ldr                     r7,[r1] ; [ORIG 16-BIT INS]
+      52 00000040 0720F017                          ands            r7,#0x20 ; [KEEP 32-BIT INS]
+      53 00000044 D0FB                              beq                     bucleCamaraArray ; [ORIG 16-BIT INS]
+      54                                            
+      55                                            ;guarda pixel del puerto B en apuntador a matriz
+TI ARM Assembler Unix v5.2.2 Tue Jun  2 02:20:16 2015
+
+Tools Copyright (c) 1996-2015 Texas Instruments Incorporated
+../func.s                                                            PAGE    2
+
+      56 00000046 781F                              ldrb            r7,[r3] ; [ORIG 16-BIT INS]
+      57 00000048 5507                              strb            r7,[r0,r4] ; [ORIG 16-BIT INS]
+      58 0000004a 0401F104                          add                     r4,#1 ; [KEEP 32-BIT INS]
+      59                                            
+      60                                            ;reinicia bandera de reset para pin C5
+      61 0000004e 0720F04F                          mov                     r7,#0x20 ; [KEEP 32-BIT INS]
+      62 00000052 6017                              str                     r7,[r2] ; [ORIG 16-BIT INS]
+      63                                            
+      64                                            ;comparamos contante(9600) con offset incremental para apuntado, si es menos s
+      65 00000054 42A5                              cmp                     r5,r4 ; [ORIG 16-BIT INS]
+      66 00000056 D8F2                              bhi                     bucleCamaraArray ; [ORIG 16-BIT INS]
+      67                                            
+      68                                            ;salida de rutina
+      69 00000058           salidaCamaraArray:                      
+      70 00000058 BDFE                              pop                     {r1-r7,pc} ; [ORIG 16-BIT INS]
+      71                                            
+      72                                            
+      73                    ;**************************************************************************************;
+      74                    ;funcion para pruevas
+      75 0000005a           prueva:
+      76 0000005a B5FE                              push            {r1-r7,lr} ; [ORIG 16-BIT INS]
+      77                                            
+      78 0000005c 1058F85F                          ldr                     r1,INTRIS_C5 ; [KEEP 32-BIT INS]
+      79 00000060 2058F85F                          ldr                     r2,INTICR_C5 ; [KEEP 32-BIT INS]
+      80 00000064 3064F85F                          ldr                     r3,PIN_B ; [KEEP 32-BIT INS]
+      81                                            
+      82                                            
+      83 00000068 BDFE                              pop                     {r1-r7,pc} ; [ORIG 16-BIT INS]
+      84                    
+      85                                            
+      86                                            .endasmfunc
+      87                                            .end
+
+--------------------------
+Thumb2 Statistics
+--------------------------
+Number of Thumb2 ins converted to Thumb = 0 (0%)
+Number of Thumb ins in input = 19 (59%)
+Number of Thumb2 ins encoded as Thumb2 = 13 (100%)
+Number of Thumb2 ins converted to 2 OPND Thumb = 13
+
+
+No Assembly Errors, No Assembly Warnings

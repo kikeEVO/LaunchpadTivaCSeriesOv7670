@@ -1,0 +1,31 @@
+Conexiones 
+
+Ov7670  	       MCU	
+
+SIO_C - - - - - - - -  PC6
+SIO_D - - - - - - - -  PC7
+VSYNC - - - - - - - -  PD2
+HREF  & PCLK  - - - -  PC5  (compuerta AND)
+XCLK  - - - - - - - -  PA7
+D7  - - - - - - - - -  PB7
+D6  - - - - - - - - -  PB6
+D5  - - - - - - - - -  PB5
+D4  - - - - - - - - -  PB4
+D3  - - - - - - - - -  PB3
+D2  - - - - - - - - -  PB2
+D1  - - - - - - - - -  PB1
+D0  - - - - - - - - -  PB0
+RESET - - - - - - - -  NC
+PWDN  - - - - - - - -  NC
+
+
+LCD		       MCU
+
+BKL - - - - - - - - -  GND
+RESET - - - - - - - -  VDD
+RS  - - - - - - - - -  PA6
+LCD_CS  - - - - - - -  PA3
+SCLK  - - - - - - - -  PA2
+MOSI  - - - - - - - -  PA5
+MISO  - - - - - - - -  NC
+SD_CS - - - - - - - -  NC

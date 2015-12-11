@@ -1,0 +1,481 @@
+******************************************************************************
+                  TI ARM Linker Unix v5.2.2                    
+******************************************************************************
+>> Linked Tue Jun  2 02:20:47 2015
+
+OUTPUT FILE NAME:   <camOv767060x80.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00002bdd
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000036d4  0003c92c  R  X
+  SRAM                  20000000   00008000  0000310d  00004ef3  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000036d8   000036d8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00003124   00003124    r-x .text
+  00003390    00003390    000002cc   000002cc    r-- .const
+  00003660    00003660    00000078   00000078    r-- .cinit
+20000000    20000000    00003111   00000000    rw-
+  20000000    20000000    0000026c   00000000    rw- .vtable
+  2000026c    2000026c    00002580   00000000    rw- .bss
+  200027ec    200027ec    000007d0   00000000    rw- .stack
+  20002fc0    20002fc0    00000151   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00003124     
+                  0000026c    000010ba     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.obj (.text)
+                  00001326    00000002     startup_ccs.obj (.text:FaultISR)
+                  00001328    000003b0     lcdTFT.obj (.text:init_tft)
+                  000016d8    000001f4     rtsv7M4_T_le_v4SPD16_eabi.lib : ull_div_t2.obj (.text)
+                  000018cc    000001b6                                   : fd_add_t2.obj (.text)
+                  00001a82    00000136                                   : fd_div_t2.obj (.text)
+                  00001bb8    00000128     project0.obj (.text:configura)
+                  00001ce0    00000110     rtsv7M4_T_le_v4SPD16_eabi.lib : xdscale.obj (.text)
+                  00001df0    00000104     driverlib.lib : sysctl.obj (.text:SysCtlClockSet)
+                  00001ef4    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.obj (.text)
+                  00001ff0    000000d4     SCCB.obj (.text:SCCBwriteByte)
+                  000020c4    000000be     rtsv7M4_T_le_v4SPD16_eabi.lib : xdnorm.obj (.text)
+                  00002182    000000b8     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  0000223a    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000022d6    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  000022d8    00000090     project0.obj (.text:configuraInt)
+                  00002368    00000088     SCCB.obj (.text:SCCBreadByte)
+                  000023f0    00000086     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  00002476    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdrcmple)
+                  000024fc    0000007c     SCCB.obj (.text:startSCCB)
+                  00002578    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  000025f2    00000002     startup_ccs.obj (.text:NmiSR)
+                  000025f4    00000074     SCCB.obj (.text:OV7670_init)
+                  00002668    00000074     project0.obj (.text:main)
+                  000026dc    00000070     lcdTFT.obj (.text:wrImage)
+                  0000274c    0000006c     SCCB.obj (.text:rdOV7670Reg)
+                  000027b8    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00002824    0000006a     func.obj (.text)
+                  0000288e    0000006a     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text)
+                  000028f8    00000068     SCCB.obj (.text:noAck)
+                  00002960    00000066     rtsv7M4_T_le_v4SPD16_eabi.lib : xdunscal.obj (.text)
+                  000029c6    00000002     --HOLE-- [fill = 0]
+                  000029c8    00000060     driverlib.lib : interrupt.obj (.text:IntEnable)
+                  00002a28    0000005c     SCCB.obj (.text:stopSCCB)
+                  00002a84    00000058     lcdTFT.obj (.text:setaddress_tft)
+                  00002adc    00000056     driverlib.lib : gpio.obj (.text:GPIOIntTypeSet)
+                  00002b32    00000056     rtsv7M4_T_le_v4SPD16_eabi.lib : ltoa.obj (.text)
+                  00002b88    00000052                                   : ldexp.obj (.text)
+                  00002bda    00000002     --HOLE-- [fill = 0]
+                  00002bdc    00000050                                   : boot.obj (.text)
+                  00002c2c    0000004e     SCCB.obj (.text:wrOV7670Reg)
+                  00002c7a    0000004c     lcdTFT.obj (.text:clear_tft)
+                  00002cc6    00000002     --HOLE-- [fill = 0]
+                  00002cc8    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : atoi.obj (.text)
+                  00002d14    0000004c                                   : cpy_tbl.obj (.text)
+                  00002d60    0000004a     project0.obj (.text:configOV7670)
+                  00002daa    00000002     --HOLE-- [fill = 0]
+                  00002dac    00000048     driverlib.lib : gpio.obj (.text:GPIOPinConfigure)
+                  00002df4    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_toi_t2.obj (.text)
+                  00002e3c    00000048                                   : vsprintf.obj (.text)
+                  00002e84    00000044                                   : exit.obj (.text)
+                  00002ec8    00000040                                   : signal.obj (.text)
+                  00002f08    0000003c     project0.obj (.text:IntGPIOD)
+                  00002f44    0000003c     project0.obj (.text:usartPrintf)
+                  00002f80    00000038     lcdTFT.obj (.text:spitrans)
+                  00002fb8    00000034     SCCB.obj (.text:InitSCCB)
+                  00002fec    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  00003020    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00003054    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : feraiseexcept.obj (.text)
+                  00003088    00000030     lcdTFT.obj (.text:comand_tft)
+                  000030b8    00000030     lcdTFT.obj (.text:data_tft)
+                  000030e8    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : xdclass.obj (.text)
+                  00003118    00000030                                   : xferaise.obj (.text)
+                  00003148    0000002e                                   : i_tofd_t2.obj (.text)
+                  00003176    0000002e                                   : raise.obj (.text)
+                  000031a4    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  000031ce    0000002a     rtsv7M4_T_le_v4SPD16_eabi.lib : frexp.obj (.text)
+                  000031f8    00000020     project0.obj (.text:IntGPIOf)
+                  00003218    0000001c     driverlib.lib : sysctl.obj (.text:SysCtlGPIOAHBEnable)
+                  00003234    0000001c     project0.obj (.text:Timer1IntHandler)
+                  00003250    0000001c     driverlib.lib : gpio.obj (.text:_GPIOIntNumberGet)
+                  0000326c    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : memccpy.obj (.text)
+                  00003288    00000018     driverlib.lib : gpio.obj (.text:GPIOIntRegister)
+                  000032a0    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  000032b8    00000016                                   : strchr.obj (.text)
+                  000032ce    00000002     --HOLE-- [fill = 0]
+                  000032d0    00000014                                   : _lock.obj (.text)
+                  000032e4    00000014                                   : strlen.obj (.text)
+                  000032f8    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  0000330a    00000012                   : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  0000331c    0000000e                   : gpio.obj (.text:GPIOIntDisable)
+                  0000332a    0000000e                   : gpio.obj (.text:GPIOIntStatus)
+                  00003338    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00003346    0000000c     driverlib.lib : gpio.obj (.text:GPIOIntEnable)
+                  00003352    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  0000335e    0000000a     driverlib.lib : uart.obj (.text:UARTCharPut)
+                  00003368    00000006                   : gpio.obj (.text:GPIOIntClear)
+                  0000336e    00000006                   : gpio.obj (.text:GPIOPinRead)
+                  00003374    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  0000337a    00000006     startup_ccs.obj (.text:ResetISR)
+                  00003380    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  00003386    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  0000338c    00000004                                   : pre_init.obj (.text)
+
+.const     0    00003390    000002cc     
+                  00003390    00000101     rtsv7M4_T_le_v4SPD16_eabi.lib : ctype.obj (.const:.string:_ctypes_)
+                  00003491    00000003     --HOLE-- [fill = 0]
+                  00003494    000000c0     driverlib.lib : gpio.obj (.const:g_ppui32GPIOIntMapBlizzard)
+                  00003554    00000078                   : gpio.obj (.const:g_pui32GPIOBaseAddrs)
+                  000035cc    00000070                   : interrupt.obj (.const)
+                  0000363c    00000020     SCCB.obj (.const)
+
+.cinit     0    00003660    00000078     
+                  00003660    00000041     (.cinit..data.load) [load image, compression = rle]
+                  000036a1    00000003     --HOLE-- [fill = 0]
+                  000036a4    0000000c     (__TI_handler_table)
+                  000036b0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000036b8    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  000036c0    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.vtable    0    20000000    0000026c     UNINITIALIZED
+                  20000000    0000026c     driverlib.lib : interrupt.obj (.vtable)
+
+.bss       0    2000026c    00002580     UNINITIALIZED
+                  2000026c    00002580     lcdTFT.obj (.bss:matriz)
+
+.data      0    20002fc0    00000151     UNINITIALIZED
+                  20002fc0    000000b0     rtsv7M4_T_le_v4SPD16_eabi.lib : signal.obj (.data:sigtable)
+                  20003070    00000080                                   : xvalues.obj (.data)
+                  200030f0    00000008                                   : _lock.obj (.data)
+                  200030f8    00000008                                   : exit.obj (.data)
+                  20003100    00000008                                   : feraiseexcept.obj (.data)
+                  20003108    00000004                                   : errno.obj (.data)
+                  2000310c    00000004                                   : stkdepth_vars.obj (.data)
+                  20003110    00000001     project0.obj (.data)
+
+.TI.noinit 
+*          0    2000026c    00000000     UNINITIALIZED
+
+.stack     0    200027ec    000007d0     UNINITIALIZED
+                  200027ec    000007d0     --HOLE--
+
+.TI.persistent 
+*          0    20002fc0    00000000     UNINITIALIZED
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000036c0 records: 3, size/record: 8, table size: 24
+	.data: load addr=00003660, load size=00000041 bytes, run addr=20002fc0, run size=00000151 bytes, compression=rle
+	.bss: load addr=000036b0, load size=00000008 bytes, run addr=2000026c, run size=00002580 bytes, compression=zero_init
+	.vtable: load addr=000036b8, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000036a4 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_rle24
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00002e85  C$$EXIT                 
+000031a5  GPIODirModeSet          
+00003369  GPIOIntClear            
+0000331d  GPIOIntDisable          
+00003347  GPIOIntEnable           
+00003289  GPIOIntRegister         
+0000332b  GPIOIntStatus           
+00002add  GPIOIntTypeSet          
+00002183  GPIOPadConfigSet        
+00002dad  GPIOPinConfigure        
+0000336f  GPIOPinRead             
+000032f9  GPIOPinTypeGPIOInput    
+0000330b  GPIOPinTypeGPIOOutput   
+00003375  GPIOPinWrite            
+00002fb9  InitSCCB                
+000029c9  IntEnable               
+00002f09  IntGPIOD                
+000031f9  IntGPIOf                
+00002fed  IntRegister             
+000025f5  OV7670_init             
+0000337b  ResetISR                
+00002369  SCCBreadByte            
+00001ff1  SCCBwriteByte           
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+00001df1  SysCtlClockSet          
+00003381  SysCtlDelay             
+00003219  SysCtlGPIOAHBEnable     
+00003021  SysCtlPeripheralEnable  
+00003235  Timer1IntHandler        
+0000335f  UARTCharPut             
+000030e9  _Dclass                 
+20003070  _Denorm                 
+000020c5  _Dnorm                  
+00001ce1  _Dscale                 
+00002961  _Dunscale               
+20003080  _Eps                    
+20003108  _Errno                  
+20003100  _Fenv                   
+00003119  _Feraise                
+20003090  _Hugeval                
+200030a0  _Inf                    
+200030b0  _Nan                    
+200030d0  _Rteps                  
+200030c0  _Snan                   
+20003104  _Tls_setup__Fenv        
+200030e0  _Xbig                   
+200030e8  _Zero                   
+20002fbc  __STACK_END             
+000007d0  __STACK_SIZE            
+200028ec  __STACK_TOP             
+000036c0  __TI_CINIT_Base         
+000036d8  __TI_CINIT_Limit        
+000036a4  __TI_Handler_Table_Base 
+000036b0  __TI_Handler_Table_Limit
+000027b9  __TI_auto_init          
+200030f8  __TI_cleanup_ptr        
+00003339  __TI_decompress_none    
+00003387  __TI_decompress_rle24   
+200030fc  __TI_dtors_ptr          
+00001021  __TI_printfi            
+00000000  __TI_static_base__      
+00003353  __TI_zero_init          
+000023f1  __aeabi_cdcmpeq         
+000023f1  __aeabi_cdcmple         
+00002477  __aeabi_cdrcmple        
+00002df5  __aeabi_d2iz            
+000018d7  __aeabi_dadd            
+00001a83  __aeabi_ddiv            
+00001ef5  __aeabi_dmul            
+000018cd  __aeabi_dsub            
+00003149  __aeabi_i2d             
+00002579  __aeabi_memclr          
+00002579  __aeabi_memclr4         
+00002579  __aeabi_memclr8         
+0000223b  __aeabi_memcpy          
+0000223b  __aeabi_memcpy4         
+0000223b  __aeabi_memcpy8         
+0000257b  __aeabi_memset          
+0000257b  __aeabi_memset4         
+0000257b  __aeabi_memset8         
+000016d9  __aeabi_uldivmod        
+ffffffff  __binit__               
+ffffffff  __c_args__              
+200027ec  __stack                 
+000032a1  _args_main              
+00002bdd  _c_int00                
+00003390  _ctypes_                
+200030f0  _lock                   
+000032df  _nop                    
+000032d7  _register_lock          
+000032d1  _register_unlock        
+0000338d  _system_pre_init        
+200030f4  _unlock                 
+00002e89  abort                   
+00002cc9  atoi                    
+ffffffff  binit                   
+00002847  camaraArray             
+0000363c  change_reg              
+00002c7b  clear_tft               
+00003089  comand_tft              
+00002d61  configOV7670            
+00001bb9  configura               
+000022d9  configuraInt            
+00002d15  copy_in                 
+000030b9  data_tft                
+00002839  delay_s                 
+00002e91  exit                    
+00003055  feraiseexcept           
+000031cf  frexp                   
+20000000  g_pfnRAMVectors         
+00000000  g_pfnVectors            
+00001329  init_tft                
+00002b89  ldexp                   
+00002b33  ltoa                    
+00002669  main                    
+2000310c  main_func_sp            
+2000026c  matriz                  
+0000326d  memccpy                 
+0000223b  memcpy                  
+00002581  memset                  
+000028f9  noAck                   
+00003177  raise                   
+0000274d  rdOV7670Reg             
+00002a85  setaddress_tft          
+00002ec9  signal                  
+00002f81  spitrans                
+000024fd  startSCCB               
+00002a29  stopSCCB                
+000032b9  strchr                  
+000032e5  strlen                  
+00002f45  usartPrintf             
+20003110  vsinc                   
+00002e3d  vsprintf                
+000026dd  wrImage                 
+00002c2d  wrOV7670Reg             
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  g_pfnVectors            
+000007d0  __STACK_SIZE            
+00001021  __TI_printfi            
+00001329  init_tft                
+000016d9  __aeabi_uldivmod        
+000018cd  __aeabi_dsub            
+000018d7  __aeabi_dadd            
+00001a83  __aeabi_ddiv            
+00001bb9  configura               
+00001ce1  _Dscale                 
+00001df1  SysCtlClockSet          
+00001ef5  __aeabi_dmul            
+00001ff1  SCCBwriteByte           
+000020c5  _Dnorm                  
+00002183  GPIOPadConfigSet        
+0000223b  __aeabi_memcpy          
+0000223b  __aeabi_memcpy4         
+0000223b  __aeabi_memcpy8         
+0000223b  memcpy                  
+000022d9  configuraInt            
+00002369  SCCBreadByte            
+000023f1  __aeabi_cdcmpeq         
+000023f1  __aeabi_cdcmple         
+00002477  __aeabi_cdrcmple        
+000024fd  startSCCB               
+00002579  __aeabi_memclr          
+00002579  __aeabi_memclr4         
+00002579  __aeabi_memclr8         
+0000257b  __aeabi_memset          
+0000257b  __aeabi_memset4         
+0000257b  __aeabi_memset8         
+00002581  memset                  
+000025f5  OV7670_init             
+00002669  main                    
+000026dd  wrImage                 
+0000274d  rdOV7670Reg             
+000027b9  __TI_auto_init          
+00002839  delay_s                 
+00002847  camaraArray             
+000028f9  noAck                   
+00002961  _Dunscale               
+000029c9  IntEnable               
+00002a29  stopSCCB                
+00002a85  setaddress_tft          
+00002add  GPIOIntTypeSet          
+00002b33  ltoa                    
+00002b89  ldexp                   
+00002bdd  _c_int00                
+00002c2d  wrOV7670Reg             
+00002c7b  clear_tft               
+00002cc9  atoi                    
+00002d15  copy_in                 
+00002d61  configOV7670            
+00002dad  GPIOPinConfigure        
+00002df5  __aeabi_d2iz            
+00002e3d  vsprintf                
+00002e85  C$$EXIT                 
+00002e89  abort                   
+00002e91  exit                    
+00002ec9  signal                  
+00002f09  IntGPIOD                
+00002f45  usartPrintf             
+00002f81  spitrans                
+00002fb9  InitSCCB                
+00002fed  IntRegister             
+00003021  SysCtlPeripheralEnable  
+00003055  feraiseexcept           
+00003089  comand_tft              
+000030b9  data_tft                
+000030e9  _Dclass                 
+00003119  _Feraise                
+00003149  __aeabi_i2d             
+00003177  raise                   
+000031a5  GPIODirModeSet          
+000031cf  frexp                   
+000031f9  IntGPIOf                
+00003219  SysCtlGPIOAHBEnable     
+00003235  Timer1IntHandler        
+0000326d  memccpy                 
+00003289  GPIOIntRegister         
+000032a1  _args_main              
+000032b9  strchr                  
+000032d1  _register_unlock        
+000032d7  _register_lock          
+000032df  _nop                    
+000032e5  strlen                  
+000032f9  GPIOPinTypeGPIOInput    
+0000330b  GPIOPinTypeGPIOOutput   
+0000331d  GPIOIntDisable          
+0000332b  GPIOIntStatus           
+00003339  __TI_decompress_none    
+00003347  GPIOIntEnable           
+00003353  __TI_zero_init          
+0000335f  UARTCharPut             
+00003369  GPIOIntClear            
+0000336f  GPIOPinRead             
+00003375  GPIOPinWrite            
+0000337b  ResetISR                
+00003381  SysCtlDelay             
+00003387  __TI_decompress_rle24   
+0000338d  _system_pre_init        
+00003390  _ctypes_                
+0000363c  change_reg              
+000036a4  __TI_Handler_Table_Base 
+000036b0  __TI_Handler_Table_Limit
+000036c0  __TI_CINIT_Base         
+000036d8  __TI_CINIT_Limit        
+20000000  g_pfnRAMVectors         
+2000026c  matriz                  
+200027ec  __stack                 
+200028ec  __STACK_TOP             
+20002fbc  __STACK_END             
+20003070  _Denorm                 
+20003080  _Eps                    
+20003090  _Hugeval                
+200030a0  _Inf                    
+200030b0  _Nan                    
+200030c0  _Snan                   
+200030d0  _Rteps                  
+200030e0  _Xbig                   
+200030e8  _Zero                   
+200030f0  _lock                   
+200030f4  _unlock                 
+200030f8  __TI_cleanup_ptr        
+200030fc  __TI_dtors_ptr          
+20003100  _Fenv                   
+20003104  _Tls_setup__Fenv        
+20003108  _Errno                  
+2000310c  main_func_sp            
+20003110  vsinc                   
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+
+[136 symbols]

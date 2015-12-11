@@ -1,0 +1,805 @@
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    1
+
+       1                    ;******************************************************************************
+       2                    ;* TI ARM C/C++ Codegen                                           Unix v5.1.6 *
+       3                    ;* Date/Time created: Fri Oct  3 23:57:21 2014                                *
+       4                    ;******************************************************************************
+       5                            .compiler_opts --abi=eabi --arm_vmrs_si_workaround=on --code_state=16 --diag_wrap=off --disabl
+       6 00000000                   .thumb
+       7                    
+       8                    $C$DW$CU        .dwtag  DW_TAG_compile_unit
+       9                            .dwattr $C$DW$CU, DW_AT_name("../delays.c")
+      10                            .dwattr $C$DW$CU, DW_AT_producer("TI TI ARM C/C++ Codegen Unix v5.1.6 Copyright (c) 1996-2014 
+      11                            .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      12                            .dwattr $C$DW$CU, DW_AT_comp_dir("/home/kike/proyectos/workspaceCcs/project0/Debug")
+      13                            .global continua
+      14                            .common continua,4,4
+      15                    $C$DW$1 .dwtag  DW_TAG_variable, DW_AT_name("continua")
+      16                            .dwattr $C$DW$1, DW_AT_TI_symbol_name("continua")
+      17                            .dwattr $C$DW$1, DW_AT_location[DW_OP_addr continua]
+      18                            .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$41)
+      19                            .dwattr $C$DW$1, DW_AT_external
+      20                            .dwattr $C$DW$1, DW_AT_decl_file("../delays.c")
+      21                            .dwattr $C$DW$1, DW_AT_decl_line(0x16)
+      22                            .dwattr $C$DW$1, DW_AT_decl_column(0x0e)
+      23                    ;       /home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armopt /tmp/13890BxnpSu /tmp/13890W
+      24 00000000                   .sect   ".text:delay_timer_direct"
+      25                            .clink
+      26                            .thumbfunc delay_timer_direct
+      27 00000000                   .thumb
+      28                            .global delay_timer_direct
+      29                    
+      30                    $C$DW$2 .dwtag  DW_TAG_subprogram, DW_AT_name("delay_timer_direct")
+      31                            .dwattr $C$DW$2, DW_AT_low_pc(delay_timer_direct)
+      32                            .dwattr $C$DW$2, DW_AT_high_pc(0x00)
+      33                            .dwattr $C$DW$2, DW_AT_TI_symbol_name("delay_timer_direct")
+      34                            .dwattr $C$DW$2, DW_AT_external
+      35                            .dwattr $C$DW$2, DW_AT_TI_begin_file("../delays.c")
+      36                            .dwattr $C$DW$2, DW_AT_TI_begin_line(0x1e)
+      37                            .dwattr $C$DW$2, DW_AT_TI_begin_column(0x06)
+      38                            .dwattr $C$DW$2, DW_AT_decl_file("../delays.c")
+      39                            .dwattr $C$DW$2, DW_AT_decl_line(0x1e)
+      40                            .dwattr $C$DW$2, DW_AT_decl_column(0x06)
+      41                            .dwattr $C$DW$2, DW_AT_TI_max_frame_size(0x10)
+      42                            .dwpsn  file "../delays.c",line 31,column 1,is_stmt,address delay_timer_direct,isa 1
+      43                    
+      44                            .dwfde $C$DW$CIE, delay_timer_direct
+      45                    $C$DW$3 .dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
+      46                            .dwattr $C$DW$3, DW_AT_TI_symbol_name("time")
+      47                            .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$11)
+      48                            .dwattr $C$DW$3, DW_AT_location[DW_OP_reg0]
+      49                    
+      50                    ;*****************************************************************************
+      51                    ;* FUNCTION NAME: delay_timer_direct                                         *
+      52                    ;*                                                                           *
+      53                    ;*   Regs Modified     : A1,A2,A3,A4,V1,V2,V3,V9,SP,LR,SR,D0,D0_hi,D1,D1_hi, *
+      54                    ;*                           D2,D2_hi,D3,D3_hi,D4,D4_hi,D5,D5_hi,D6,D6_hi,D7,*
+      55                    ;*                           D7_hi,FPEXC,FPSCR                               *
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    2
+
+      56                    ;*   Regs Used         : A1,A2,A3,A4,V1,V2,V3,V9,SP,LR,SR,D0,D0_hi,D1,D1_hi, *
+      57                    ;*                           D2,D2_hi,D3,D3_hi,D4,D4_hi,D5,D5_hi,D6,D6_hi,D7,*
+      58                    ;*                           D7_hi,FPEXC,FPSCR                               *
+      59                    ;*   Local Frame Size  : 0 Args + 0 Auto + 16 Save = 16 byte                 *
+      60                    ;*****************************************************************************
+      61                    delay_timer_direct:
+      62                    ;* --------------------------------------------------------------------------*
+      63                    ;* V1    assigned to $O$C1
+      64                    ;* A1    assigned to $O$C2
+      65                    ;* A1    assigned to time
+      66                    $C$DW$4 .dwtag  DW_TAG_variable, DW_AT_name("time")
+      67                            .dwattr $C$DW$4, DW_AT_TI_symbol_name("time")
+      68                            .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$51)
+      69                            .dwattr $C$DW$4, DW_AT_location[DW_OP_reg0]
+      70                    ;* V1    assigned to $O$K3
+      71                            .dwcfi  cfa_offset, 0
+      72 00000000 B570              PUSH      {V1, V2, V3, LR}      ; [DPU_3_PIPE]  ; [ORIG 16-BIT INS]
+      73                            .dwcfi  cfa_offset, 16
+      74                            .dwcfi  save_reg_to_mem, 14, -4
+      75                            .dwcfi  save_reg_to_mem, 6, -8
+      76                            .dwcfi  save_reg_to_mem, 5, -12
+      77                            .dwcfi  save_reg_to_mem, 4, -16
+      78                            .dwpsn  file "../delays.c",line 32,column 2,is_stmt,isa 1
+      79 00000002 4C0D              LDR       V1, $C$CON1           ; [DPU_3_PIPE] |32|  ; [ORIG 16-BIT INS]
+      80                            .dwpsn  file "../delays.c",line 33,column 2,is_stmt,isa 1
+      81 00000004 7580F04F          MOV       V2, #16777216         ; [DPU_3_PIPE] |33|  ; [KEEP 32-BIT INS]
+      82 00000008 6BE9              LDR       A2, [V2, #60]         ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      83                            .dwpsn  file "../delays.c",line 32,column 2,is_stmt,isa 1
+      84 0000000a 2600              MOVS      V3, #0                ; [DPU_3_PIPE] |32|  ; [ORIG 16-BIT INS]
+      85 0000000c 6026              STR       V3, [V1, #0]          ; [DPU_3_PIPE] |32|  ; [ORIG 16-BIT INS]
+      86                            .dwpsn  file "../delays.c",line 34,column 2,is_stmt,isa 1
+      87 0000000e 4E0B              LDR       V3, $C$CON2           ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+      88                            .dwpsn  file "../delays.c",line 33,column 2,is_stmt,isa 1
+      89 00000010 6B89              LDR       A2, [A2, #56]         ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      90 00000012 0221F1A0          SUB       A3, A1, #33           ; [DPU_3_PIPE] |33|  ; [KEEP 32-BIT INS]
+      91 00000016 460B              MOV       A4, A2                ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      92 00000018 4630              MOV       A1, V3                ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      93 0000001a 21FF              MOVS      A2, #255              ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      94                    $C$DW$5 .dwtag  DW_TAG_TI_branch
+      95                            .dwattr $C$DW$5, DW_AT_low_pc(0x00)
+      96                            .dwattr $C$DW$5, DW_AT_TI_call
+      97                            .dwattr $C$DW$5, DW_AT_TI_indirect
+      98 0000001c 4798              BLX       A4                    ; [DPU_3_PIPE] |33|  ; [ORIG 16-BIT INS]
+      99                            ; CALL OCCURS {}                 ; [] |33| 
+     100                            .dwpsn  file "../delays.c",line 34,column 2,is_stmt,isa 1
+     101 0000001e 6BE8              LDR       A1, [V2, #60]         ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+     102 00000020 6840              LDR       A1, [A1, #4]          ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+     103 00000022 21FF              MOVS      A2, #255              ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+     104 00000024 4602              MOV       A3, A1                ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+     105 00000026 4630              MOV       A1, V3                ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+     106                    $C$DW$6 .dwtag  DW_TAG_TI_branch
+     107                            .dwattr $C$DW$6, DW_AT_low_pc(0x00)
+     108                            .dwattr $C$DW$6, DW_AT_TI_call
+     109                            .dwattr $C$DW$6, DW_AT_TI_indirect
+     110 00000028 4790              BLX       A3                    ; [DPU_3_PIPE] |34|  ; [ORIG 16-BIT INS]
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    3
+
+     111                            ; CALL OCCURS {}                 ; [] |34| 
+     112                            .dwpsn  file "../delays.c",line 35,column 8,is_stmt,isa 1
+     113 0000002a 6820              LDR       A1, [V1, #0]          ; [DPU_3_PIPE] |35|  ; [ORIG 16-BIT INS]
+     114 0000002c B910              CBNZ      A1, ||$C$L2||         ; []  ; [ORIG 16-BIT INS]
+     115                            ; BRANCHCC OCCURS {||$C$L2||}    ; [] |35| 
+     116                    ;* --------------------------------------------------------------------------*
+     117                    ;*   BEGIN LOOP ||$C$L1||
+     118                    ;*
+     119                    ;*   Loop source line                : 35
+     120                    ;*   Loop closing brace source line  : 35
+     121                    ;*   Known Minimum Trip Count        : 1
+     122                    ;*   Known Maximum Trip Count        : 4294967295
+     123                    ;*   Known Max Trip Count Factor     : 1
+     124                    ;* --------------------------------------------------------------------------*
+     125 0000002e           ||$C$L1||:    
+     126 0000002e 6820              LDR       A1, [V1, #0]          ; [DPU_3_PIPE] |35|  ; [ORIG 16-BIT INS]
+     127 00000030 2800              CMP       A1, #0                ; [DPU_3_PIPE] |35|  ; [ORIG 16-BIT INS]
+     128 00000032 D0FC              BEQ       ||$C$L1||             ; [DPU_3_PIPE] |35|  ; [ORIG 16-BIT INS]
+     129                            ; BRANCHCC OCCURS {||$C$L1||}    ; [] |35| 
+     130                    ;* --------------------------------------------------------------------------*
+     131                    ||$C$L2||:    
+     132                    $C$DW$7 .dwtag  DW_TAG_TI_branch
+     133                            .dwattr $C$DW$7, DW_AT_low_pc(0x00)
+     134                            .dwattr $C$DW$7, DW_AT_TI_return
+     135 00000034 BD70              POP       {V1, V2, V3, PC}      ; [DPU_3_PIPE]  ; [ORIG 16-BIT INS]
+     136                            .dwcfi  cfa_offset, 0
+     137                            ; BRANCH OCCURS                  ; [] 
+     138                            .dwattr $C$DW$2, DW_AT_TI_end_file("../delays.c")
+     139                            .dwattr $C$DW$2, DW_AT_TI_end_line(0x25)
+     140                            .dwattr $C$DW$2, DW_AT_TI_end_column(0x01)
+     141                            .dwendentry
+     142                            .dwendtag $C$DW$2
+     143                    
+     144 00000000                   .sect   ".text:Timer0IntHandler"
+     145                            .clink
+     146                            .thumbfunc Timer0IntHandler
+     147 00000000                   .thumb
+     148                            .global Timer0IntHandler
+     149                    
+     150                    $C$DW$8 .dwtag  DW_TAG_subprogram, DW_AT_name("Timer0IntHandler")
+     151                            .dwattr $C$DW$8, DW_AT_low_pc(Timer0IntHandler)
+     152                            .dwattr $C$DW$8, DW_AT_high_pc(0x00)
+     153                            .dwattr $C$DW$8, DW_AT_TI_symbol_name("Timer0IntHandler")
+     154                            .dwattr $C$DW$8, DW_AT_external
+     155                            .dwattr $C$DW$8, DW_AT_TI_begin_file("../delays.c")
+     156                            .dwattr $C$DW$8, DW_AT_TI_begin_line(0x18)
+     157                            .dwattr $C$DW$8, DW_AT_TI_begin_column(0x06)
+     158                            .dwattr $C$DW$8, DW_AT_decl_file("../delays.c")
+     159                            .dwattr $C$DW$8, DW_AT_decl_line(0x18)
+     160                            .dwattr $C$DW$8, DW_AT_decl_column(0x06)
+     161                            .dwattr $C$DW$8, DW_AT_TI_max_frame_size(0x08)
+     162                            .dwpsn  file "../delays.c",line 25,column 1,is_stmt,address Timer0IntHandler,isa 1
+     163                    
+     164                            .dwfde $C$DW$CIE, Timer0IntHandler
+     165                    
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    4
+
+     166                    ;*****************************************************************************
+     167                    ;* FUNCTION NAME: Timer0IntHandler                                           *
+     168                    ;*                                                                           *
+     169                    ;*   Regs Modified     : A1,A2,A3,A4,V9,SP,LR,SR,D0,D0_hi,D1,D1_hi,D2,D2_hi, *
+     170                    ;*                           D3,D3_hi,D4,D4_hi,D5,D5_hi,D6,D6_hi,D7,D7_hi,   *
+     171                    ;*                           FPEXC,FPSCR                                     *
+     172                    ;*   Regs Used         : A1,A2,A3,A4,V9,SP,LR,SR,D0,D0_hi,D1,D1_hi,D2,D2_hi, *
+     173                    ;*                           D3,D3_hi,D4,D4_hi,D5,D5_hi,D6,D6_hi,D7,D7_hi,   *
+     174                    ;*                           FPEXC,FPSCR                                     *
+     175                    ;*   Local Frame Size  : 0 Args + 0 Auto + 4 Save = 4 byte                   *
+     176                    ;*****************************************************************************
+     177 00000000           Timer0IntHandler:
+     178                    ;* --------------------------------------------------------------------------*
+     179                            .dwcfi  cfa_offset, 0
+     180                            .dwpsn  file "../delays.c",line 26,column 2,is_stmt,isa 1
+     181 00000000 4805              LDR       A1, $C$CON3           ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     182 00000002 B508              PUSH      {A4, LR}              ; [DPU_3_PIPE]  ; [ORIG 16-BIT INS]
+     183                            .dwcfi  cfa_offset, 8
+     184                            .dwcfi  save_reg_to_mem, 14, -4
+     185                            .dwcfi  save_reg_to_mem, 3, -8
+     186 00000004 6800              LDR       A1, [A1, #0]          ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     187 00000006 6800              LDR       A1, [A1, #0]          ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     188 00000008 4602              MOV       A3, A1                ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     189 0000000a 4804              LDR       A1, $C$CON4           ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     190 0000000c 2101              MOVS      A2, #1                ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     191                    $C$DW$9 .dwtag  DW_TAG_TI_branch
+     192                            .dwattr $C$DW$9, DW_AT_low_pc(0x00)
+     193                            .dwattr $C$DW$9, DW_AT_TI_call
+     194                            .dwattr $C$DW$9, DW_AT_TI_indirect
+     195 0000000e 4790              BLX       A3                    ; [DPU_3_PIPE] |26|  ; [ORIG 16-BIT INS]
+     196                            ; CALL OCCURS {}                 ; [] |26| 
+     197                            .dwpsn  file "../delays.c",line 27,column 2,is_stmt,isa 1
+     198 00000010 4803              LDR       A1, $C$CON6           ; [DPU_3_PIPE] |27|  ; [ORIG 16-BIT INS]
+     199 00000012 2101              MOVS      A2, #1                ; [DPU_3_PIPE] |27|  ; [ORIG 16-BIT INS]
+     200 00000014 6001              STR       A2, [A1, #0]          ; [DPU_3_PIPE] |27|  ; [ORIG 16-BIT INS]
+     201                    $C$DW$10        .dwtag  DW_TAG_TI_branch
+     202                            .dwattr $C$DW$10, DW_AT_low_pc(0x00)
+     203                            .dwattr $C$DW$10, DW_AT_TI_return
+     204 00000016 BD08              POP       {A4, PC}              ; [DPU_3_PIPE]  ; [ORIG 16-BIT INS]
+     205                            .dwcfi  cfa_offset, 0
+     206                            ; BRANCH OCCURS                  ; [] 
+     207                            .dwattr $C$DW$8, DW_AT_TI_end_file("../delays.c")
+     208                            .dwattr $C$DW$8, DW_AT_TI_end_line(0x1c)
+     209                            .dwattr $C$DW$8, DW_AT_TI_end_column(0x01)
+     210                            .dwendentry
+     211                            .dwendtag $C$DW$8
+     212                    
+     213                    ;******************************************************************************
+     214                    ;* CONSTANT TABLE                                                             *
+     215                    ;******************************************************************************
+     216 00000036                   .sect   ".text:delay_timer_direct"
+     217                            .align  4
+     218 00000036 000046C0! ||$C$CON1||:    .bits   continua,32
+         0000003a 00000000 
+     219                            .align  4
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    5
+
+     220 0000003a 00000000  ||$C$CON2||:    .bits   1073938432,32
+         0000003e 00004003 
+     221                    ;******************************************************************************
+     222                    ;* CONSTANT TABLE                                                             *
+     223                    ;******************************************************************************
+     224 00000018                   .sect   ".text:Timer0IntHandler"
+     225                            .align  4
+     226 00000018 0100003C  ||$C$CON3||:    .bits   16777276,32
+     227                            .align  4
+     228 0000001c 40030000  ||$C$CON4||:    .bits   1073938432,32
+     229                            .align  4
+     230 00000020 00000000! ||$C$CON6||:    .bits   continua,32
+     231                    
+     232                    ;******************************************************************************
+     233                    ;* BUILD ATTRIBUTES                                                           *
+     234                    ;******************************************************************************
+     235                            .battr "aeabi", Tag_File, 1, Tag_ABI_PCS_wchar_t(2)
+     236                            .battr "aeabi", Tag_File, 1, Tag_ABI_FP_rounding(0)
+     237                            .battr "aeabi", Tag_File, 1, Tag_ABI_FP_denormal(0)
+     238                            .battr "aeabi", Tag_File, 1, Tag_ABI_FP_exceptions(0)
+     239                            .battr "aeabi", Tag_File, 1, Tag_ABI_FP_number_model(1)
+     240                            .battr "aeabi", Tag_File, 1, Tag_ABI_enum_size(0)
+     241                            .battr "aeabi", Tag_File, 1, Tag_ABI_optimization_goals(4)
+     242                            .battr "aeabi", Tag_File, 1, Tag_ABI_FP_optimization_goals(0)
+     243                            .battr "TI", Tag_File, 1, Tag_Bitfield_layout(2)
+     244                            .battr "TI", Tag_File, 1, Tag_FP_interface(1)
+     245                    
+     246                    ;******************************************************************************
+     247                    ;* TYPE INFORMATION                                                           *
+     248                    ;******************************************************************************
+     249                    
+     250                    $C$DW$T$20      .dwtag  DW_TAG_structure_type
+     251                            .dwattr $C$DW$T$20, DW_AT_byte_size(0x18)
+     252                    $C$DW$11        .dwtag  DW_TAG_member
+     253                            .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$10)
+     254                            .dwattr $C$DW$11, DW_AT_name("fd")
+     255                            .dwattr $C$DW$11, DW_AT_TI_symbol_name("fd")
+     256                            .dwattr $C$DW$11, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     257                            .dwattr $C$DW$11, DW_AT_accessibility(DW_ACCESS_public)
+     258                            .dwattr $C$DW$11, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     259                            .dwattr $C$DW$11, DW_AT_decl_line(0x5b)
+     260                            .dwattr $C$DW$11, DW_AT_decl_column(0x0b)
+     261                    $C$DW$12        .dwtag  DW_TAG_member
+     262                            .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$19)
+     263                            .dwattr $C$DW$12, DW_AT_name("buf")
+     264                            .dwattr $C$DW$12, DW_AT_TI_symbol_name("buf")
+     265                            .dwattr $C$DW$12, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+     266                            .dwattr $C$DW$12, DW_AT_accessibility(DW_ACCESS_public)
+     267                            .dwattr $C$DW$12, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     268                            .dwattr $C$DW$12, DW_AT_decl_line(0x5c)
+     269                            .dwattr $C$DW$12, DW_AT_decl_column(0x16)
+     270                    $C$DW$13        .dwtag  DW_TAG_member
+     271                            .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$19)
+     272                            .dwattr $C$DW$13, DW_AT_name("pos")
+     273                            .dwattr $C$DW$13, DW_AT_TI_symbol_name("pos")
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    6
+
+     274                            .dwattr $C$DW$13, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+     275                            .dwattr $C$DW$13, DW_AT_accessibility(DW_ACCESS_public)
+     276                            .dwattr $C$DW$13, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     277                            .dwattr $C$DW$13, DW_AT_decl_line(0x5d)
+     278                            .dwattr $C$DW$13, DW_AT_decl_column(0x16)
+     279                    $C$DW$14        .dwtag  DW_TAG_member
+     280                            .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$19)
+     281                            .dwattr $C$DW$14, DW_AT_name("bufend")
+     282                            .dwattr $C$DW$14, DW_AT_TI_symbol_name("bufend")
+     283                            .dwattr $C$DW$14, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+     284                            .dwattr $C$DW$14, DW_AT_accessibility(DW_ACCESS_public)
+     285                            .dwattr $C$DW$14, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     286                            .dwattr $C$DW$14, DW_AT_decl_line(0x5e)
+     287                            .dwattr $C$DW$14, DW_AT_decl_column(0x16)
+     288                    $C$DW$15        .dwtag  DW_TAG_member
+     289                            .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$19)
+     290                            .dwattr $C$DW$15, DW_AT_name("buff_stop")
+     291                            .dwattr $C$DW$15, DW_AT_TI_symbol_name("buff_stop")
+     292                            .dwattr $C$DW$15, DW_AT_data_member_location[DW_OP_plus_uconst 0x10]
+     293                            .dwattr $C$DW$15, DW_AT_accessibility(DW_ACCESS_public)
+     294                            .dwattr $C$DW$15, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     295                            .dwattr $C$DW$15, DW_AT_decl_line(0x5f)
+     296                            .dwattr $C$DW$15, DW_AT_decl_column(0x16)
+     297                    $C$DW$16        .dwtag  DW_TAG_member
+     298                            .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$11)
+     299                            .dwattr $C$DW$16, DW_AT_name("flags")
+     300                            .dwattr $C$DW$16, DW_AT_TI_symbol_name("flags")
+     301                            .dwattr $C$DW$16, DW_AT_data_member_location[DW_OP_plus_uconst 0x14]
+     302                            .dwattr $C$DW$16, DW_AT_accessibility(DW_ACCESS_public)
+     303                            .dwattr $C$DW$16, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     304                            .dwattr $C$DW$16, DW_AT_decl_line(0x60)
+     305                            .dwattr $C$DW$16, DW_AT_decl_column(0x16)
+     306                            .dwendtag $C$DW$T$20
+     307                    
+     308                            .dwattr $C$DW$T$20, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     309                            .dwattr $C$DW$T$20, DW_AT_decl_line(0x5a)
+     310                            .dwattr $C$DW$T$20, DW_AT_decl_column(0x10)
+     311                    $C$DW$T$22      .dwtag  DW_TAG_typedef, DW_AT_name("FILE")
+     312                            .dwattr $C$DW$T$22, DW_AT_type(*$C$DW$T$20)
+     313                            .dwattr $C$DW$T$22, DW_AT_language(DW_LANG_C)
+     314                            .dwattr $C$DW$T$22, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     315                            .dwattr $C$DW$T$22, DW_AT_decl_line(0x61)
+     316                            .dwattr $C$DW$T$22, DW_AT_decl_column(0x03)
+     317                    $C$DW$T$2       .dwtag  DW_TAG_unspecified_type
+     318                            .dwattr $C$DW$T$2, DW_AT_name("void")
+     319                    $C$DW$T$3       .dwtag  DW_TAG_pointer_type
+     320                            .dwattr $C$DW$T$3, DW_AT_type(*$C$DW$T$2)
+     321                            .dwattr $C$DW$T$3, DW_AT_address_class(0x20)
+     322                    $C$DW$T$4       .dwtag  DW_TAG_base_type
+     323                            .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     324                            .dwattr $C$DW$T$4, DW_AT_name("bool")
+     325                            .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     326                    $C$DW$T$5       .dwtag  DW_TAG_base_type
+     327                            .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     328                            .dwattr $C$DW$T$5, DW_AT_name("signed char")
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    7
+
+     329                            .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     330                    $C$DW$T$30      .dwtag  DW_TAG_typedef, DW_AT_name("int8_t")
+     331                            .dwattr $C$DW$T$30, DW_AT_type(*$C$DW$T$5)
+     332                            .dwattr $C$DW$T$30, DW_AT_language(DW_LANG_C)
+     333                            .dwattr $C$DW$T$30, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     334                            .dwattr $C$DW$T$30, DW_AT_decl_line(0x2a)
+     335                            .dwattr $C$DW$T$30, DW_AT_decl_column(0x1d)
+     336                    $C$DW$T$31      .dwtag  DW_TAG_typedef, DW_AT_name("int_least8_t")
+     337                            .dwattr $C$DW$T$31, DW_AT_type(*$C$DW$T$30)
+     338                            .dwattr $C$DW$T$31, DW_AT_language(DW_LANG_C)
+     339                            .dwattr $C$DW$T$31, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     340                            .dwattr $C$DW$T$31, DW_AT_decl_line(0x37)
+     341                            .dwattr $C$DW$T$31, DW_AT_decl_column(0x17)
+     342                    $C$DW$T$6       .dwtag  DW_TAG_base_type
+     343                            .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     344                            .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     345                            .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     346                    $C$DW$T$19      .dwtag  DW_TAG_pointer_type
+     347                            .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$6)
+     348                            .dwattr $C$DW$T$19, DW_AT_address_class(0x20)
+     349                    $C$DW$T$32      .dwtag  DW_TAG_typedef, DW_AT_name("uint8_t")
+     350                            .dwattr $C$DW$T$32, DW_AT_type(*$C$DW$T$6)
+     351                            .dwattr $C$DW$T$32, DW_AT_language(DW_LANG_C)
+     352                            .dwattr $C$DW$T$32, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     353                            .dwattr $C$DW$T$32, DW_AT_decl_line(0x2b)
+     354                            .dwattr $C$DW$T$32, DW_AT_decl_column(0x1c)
+     355                    $C$DW$T$33      .dwtag  DW_TAG_typedef, DW_AT_name("uint_least8_t")
+     356                            .dwattr $C$DW$T$33, DW_AT_type(*$C$DW$T$32)
+     357                            .dwattr $C$DW$T$33, DW_AT_language(DW_LANG_C)
+     358                            .dwattr $C$DW$T$33, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     359                            .dwattr $C$DW$T$33, DW_AT_decl_line(0x38)
+     360                            .dwattr $C$DW$T$33, DW_AT_decl_column(0x16)
+     361                    $C$DW$T$7       .dwtag  DW_TAG_base_type
+     362                            .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     363                            .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     364                            .dwattr $C$DW$T$7, DW_AT_byte_size(0x02)
+     365                    $C$DW$T$8       .dwtag  DW_TAG_base_type
+     366                            .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     367                            .dwattr $C$DW$T$8, DW_AT_name("short")
+     368                            .dwattr $C$DW$T$8, DW_AT_byte_size(0x02)
+     369                    $C$DW$T$34      .dwtag  DW_TAG_typedef, DW_AT_name("int16_t")
+     370                            .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$8)
+     371                            .dwattr $C$DW$T$34, DW_AT_language(DW_LANG_C)
+     372                            .dwattr $C$DW$T$34, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     373                            .dwattr $C$DW$T$34, DW_AT_decl_line(0x2c)
+     374                            .dwattr $C$DW$T$34, DW_AT_decl_column(0x1d)
+     375                    $C$DW$T$35      .dwtag  DW_TAG_typedef, DW_AT_name("int_least16_t")
+     376                            .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$34)
+     377                            .dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
+     378                            .dwattr $C$DW$T$35, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     379                            .dwattr $C$DW$T$35, DW_AT_decl_line(0x3a)
+     380                            .dwattr $C$DW$T$35, DW_AT_decl_column(0x17)
+     381                    $C$DW$T$9       .dwtag  DW_TAG_base_type
+     382                            .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     383                            .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    8
+
+     384                            .dwattr $C$DW$T$9, DW_AT_byte_size(0x02)
+     385                    $C$DW$T$36      .dwtag  DW_TAG_typedef, DW_AT_name("_Wchart")
+     386                            .dwattr $C$DW$T$36, DW_AT_type(*$C$DW$T$9)
+     387                            .dwattr $C$DW$T$36, DW_AT_language(DW_LANG_C)
+     388                            .dwattr $C$DW$T$36, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     389                            .dwattr $C$DW$T$36, DW_AT_decl_line(0x1fe)
+     390                            .dwattr $C$DW$T$36, DW_AT_decl_column(0x21)
+     391                    $C$DW$T$37      .dwtag  DW_TAG_typedef, DW_AT_name("_Wintt")
+     392                            .dwattr $C$DW$T$37, DW_AT_type(*$C$DW$T$9)
+     393                            .dwattr $C$DW$T$37, DW_AT_language(DW_LANG_C)
+     394                            .dwattr $C$DW$T$37, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     395                            .dwattr $C$DW$T$37, DW_AT_decl_line(0x1ff)
+     396                            .dwattr $C$DW$T$37, DW_AT_decl_column(0x21)
+     397                    $C$DW$T$38      .dwtag  DW_TAG_typedef, DW_AT_name("uint16_t")
+     398                            .dwattr $C$DW$T$38, DW_AT_type(*$C$DW$T$9)
+     399                            .dwattr $C$DW$T$38, DW_AT_language(DW_LANG_C)
+     400                            .dwattr $C$DW$T$38, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     401                            .dwattr $C$DW$T$38, DW_AT_decl_line(0x2d)
+     402                            .dwattr $C$DW$T$38, DW_AT_decl_column(0x1c)
+     403                    $C$DW$T$39      .dwtag  DW_TAG_typedef, DW_AT_name("uint_least16_t")
+     404                            .dwattr $C$DW$T$39, DW_AT_type(*$C$DW$T$38)
+     405                            .dwattr $C$DW$T$39, DW_AT_language(DW_LANG_C)
+     406                            .dwattr $C$DW$T$39, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     407                            .dwattr $C$DW$T$39, DW_AT_decl_line(0x3b)
+     408                            .dwattr $C$DW$T$39, DW_AT_decl_column(0x16)
+     409                    $C$DW$T$10      .dwtag  DW_TAG_base_type
+     410                            .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     411                            .dwattr $C$DW$T$10, DW_AT_name("int")
+     412                            .dwattr $C$DW$T$10, DW_AT_byte_size(0x04)
+     413                    $C$DW$T$40      .dwtag  DW_TAG_typedef, DW_AT_name("_Ptrdifft")
+     414                            .dwattr $C$DW$T$40, DW_AT_type(*$C$DW$T$10)
+     415                            .dwattr $C$DW$T$40, DW_AT_language(DW_LANG_C)
+     416                            .dwattr $C$DW$T$40, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     417                            .dwattr $C$DW$T$40, DW_AT_decl_line(0xa6)
+     418                            .dwattr $C$DW$T$40, DW_AT_decl_column(0x1e)
+     419                    $C$DW$T$41      .dwtag  DW_TAG_volatile_type
+     420                            .dwattr $C$DW$T$41, DW_AT_type(*$C$DW$T$10)
+     421                    $C$DW$T$43      .dwtag  DW_TAG_typedef, DW_AT_name("int32_t")
+     422                            .dwattr $C$DW$T$43, DW_AT_type(*$C$DW$T$10)
+     423                            .dwattr $C$DW$T$43, DW_AT_language(DW_LANG_C)
+     424                            .dwattr $C$DW$T$43, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     425                            .dwattr $C$DW$T$43, DW_AT_decl_line(0x2e)
+     426                            .dwattr $C$DW$T$43, DW_AT_decl_column(0x1d)
+     427                    $C$DW$T$44      .dwtag  DW_TAG_typedef, DW_AT_name("int_fast16_t")
+     428                            .dwattr $C$DW$T$44, DW_AT_type(*$C$DW$T$43)
+     429                            .dwattr $C$DW$T$44, DW_AT_language(DW_LANG_C)
+     430                            .dwattr $C$DW$T$44, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     431                            .dwattr $C$DW$T$44, DW_AT_decl_line(0x47)
+     432                            .dwattr $C$DW$T$44, DW_AT_decl_column(0x17)
+     433                    $C$DW$T$45      .dwtag  DW_TAG_typedef, DW_AT_name("int_fast32_t")
+     434                            .dwattr $C$DW$T$45, DW_AT_type(*$C$DW$T$43)
+     435                            .dwattr $C$DW$T$45, DW_AT_language(DW_LANG_C)
+     436                            .dwattr $C$DW$T$45, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     437                            .dwattr $C$DW$T$45, DW_AT_decl_line(0x4a)
+     438                            .dwattr $C$DW$T$45, DW_AT_decl_column(0x17)
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE    9
+
+     439                    $C$DW$T$46      .dwtag  DW_TAG_typedef, DW_AT_name("int_fast8_t")
+     440                            .dwattr $C$DW$T$46, DW_AT_type(*$C$DW$T$43)
+     441                            .dwattr $C$DW$T$46, DW_AT_language(DW_LANG_C)
+     442                            .dwattr $C$DW$T$46, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     443                            .dwattr $C$DW$T$46, DW_AT_decl_line(0x45)
+     444                            .dwattr $C$DW$T$46, DW_AT_decl_column(0x17)
+     445                    $C$DW$T$47      .dwtag  DW_TAG_typedef, DW_AT_name("int_least32_t")
+     446                            .dwattr $C$DW$T$47, DW_AT_type(*$C$DW$T$43)
+     447                            .dwattr $C$DW$T$47, DW_AT_language(DW_LANG_C)
+     448                            .dwattr $C$DW$T$47, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     449                            .dwattr $C$DW$T$47, DW_AT_decl_line(0x3c)
+     450                            .dwattr $C$DW$T$47, DW_AT_decl_column(0x17)
+     451                    $C$DW$T$48      .dwtag  DW_TAG_typedef, DW_AT_name("intptr_t")
+     452                            .dwattr $C$DW$T$48, DW_AT_type(*$C$DW$T$10)
+     453                            .dwattr $C$DW$T$48, DW_AT_language(DW_LANG_C)
+     454                            .dwattr $C$DW$T$48, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     455                            .dwattr $C$DW$T$48, DW_AT_decl_line(0x52)
+     456                            .dwattr $C$DW$T$48, DW_AT_decl_column(0x1a)
+     457                    $C$DW$T$11      .dwtag  DW_TAG_base_type
+     458                            .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     459                            .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     460                            .dwattr $C$DW$T$11, DW_AT_byte_size(0x04)
+     461                    $C$DW$T$49      .dwtag  DW_TAG_typedef, DW_AT_name("_Sizet")
+     462                            .dwattr $C$DW$T$49, DW_AT_type(*$C$DW$T$11)
+     463                            .dwattr $C$DW$T$49, DW_AT_language(DW_LANG_C)
+     464                            .dwattr $C$DW$T$49, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     465                            .dwattr $C$DW$T$49, DW_AT_decl_line(0xac)
+     466                            .dwattr $C$DW$T$49, DW_AT_decl_column(0x1a)
+     467                    $C$DW$T$51      .dwtag  DW_TAG_const_type
+     468                            .dwattr $C$DW$T$51, DW_AT_type(*$C$DW$T$11)
+     469                    $C$DW$T$52      .dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+     470                            .dwattr $C$DW$T$52, DW_AT_type(*$C$DW$T$11)
+     471                            .dwattr $C$DW$T$52, DW_AT_language(DW_LANG_C)
+     472                            .dwattr $C$DW$T$52, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     473                            .dwattr $C$DW$T$52, DW_AT_decl_line(0x57)
+     474                            .dwattr $C$DW$T$52, DW_AT_decl_column(0x19)
+     475                    $C$DW$T$25      .dwtag  DW_TAG_typedef, DW_AT_name("uint32_t")
+     476                            .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$11)
+     477                            .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+     478                            .dwattr $C$DW$T$25, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     479                            .dwattr $C$DW$T$25, DW_AT_decl_line(0x2f)
+     480                            .dwattr $C$DW$T$25, DW_AT_decl_column(0x1c)
+     481                    $C$DW$T$53      .dwtag  DW_TAG_typedef, DW_AT_name("uint_fast16_t")
+     482                            .dwattr $C$DW$T$53, DW_AT_type(*$C$DW$T$25)
+     483                            .dwattr $C$DW$T$53, DW_AT_language(DW_LANG_C)
+     484                            .dwattr $C$DW$T$53, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     485                            .dwattr $C$DW$T$53, DW_AT_decl_line(0x48)
+     486                            .dwattr $C$DW$T$53, DW_AT_decl_column(0x16)
+     487                    $C$DW$T$54      .dwtag  DW_TAG_typedef, DW_AT_name("uint_fast32_t")
+     488                            .dwattr $C$DW$T$54, DW_AT_type(*$C$DW$T$25)
+     489                            .dwattr $C$DW$T$54, DW_AT_language(DW_LANG_C)
+     490                            .dwattr $C$DW$T$54, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     491                            .dwattr $C$DW$T$54, DW_AT_decl_line(0x4b)
+     492                            .dwattr $C$DW$T$54, DW_AT_decl_column(0x16)
+     493                    $C$DW$T$55      .dwtag  DW_TAG_typedef, DW_AT_name("uint_fast8_t")
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE   10
+
+     494                            .dwattr $C$DW$T$55, DW_AT_type(*$C$DW$T$25)
+     495                            .dwattr $C$DW$T$55, DW_AT_language(DW_LANG_C)
+     496                            .dwattr $C$DW$T$55, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     497                            .dwattr $C$DW$T$55, DW_AT_decl_line(0x46)
+     498                            .dwattr $C$DW$T$55, DW_AT_decl_column(0x16)
+     499                    $C$DW$T$56      .dwtag  DW_TAG_typedef, DW_AT_name("uint_least32_t")
+     500                            .dwattr $C$DW$T$56, DW_AT_type(*$C$DW$T$25)
+     501                            .dwattr $C$DW$T$56, DW_AT_language(DW_LANG_C)
+     502                            .dwattr $C$DW$T$56, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     503                            .dwattr $C$DW$T$56, DW_AT_decl_line(0x3d)
+     504                            .dwattr $C$DW$T$56, DW_AT_decl_column(0x16)
+     505                    $C$DW$T$57      .dwtag  DW_TAG_typedef, DW_AT_name("uintptr_t")
+     506                            .dwattr $C$DW$T$57, DW_AT_type(*$C$DW$T$11)
+     507                            .dwattr $C$DW$T$57, DW_AT_language(DW_LANG_C)
+     508                            .dwattr $C$DW$T$57, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     509                            .dwattr $C$DW$T$57, DW_AT_decl_line(0x53)
+     510                            .dwattr $C$DW$T$57, DW_AT_decl_column(0x1a)
+     511                    $C$DW$T$12      .dwtag  DW_TAG_base_type
+     512                            .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     513                            .dwattr $C$DW$T$12, DW_AT_name("long")
+     514                            .dwattr $C$DW$T$12, DW_AT_byte_size(0x04)
+     515                    $C$DW$T$58      .dwtag  DW_TAG_typedef, DW_AT_name("_Int32t")
+     516                            .dwattr $C$DW$T$58, DW_AT_type(*$C$DW$T$12)
+     517                            .dwattr $C$DW$T$58, DW_AT_language(DW_LANG_C)
+     518                            .dwattr $C$DW$T$58, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     519                            .dwattr $C$DW$T$58, DW_AT_decl_line(0xa2)
+     520                            .dwattr $C$DW$T$58, DW_AT_decl_column(0x0e)
+     521                    $C$DW$T$59      .dwtag  DW_TAG_typedef, DW_AT_name("fpos_t")
+     522                            .dwattr $C$DW$T$59, DW_AT_type(*$C$DW$T$12)
+     523                            .dwattr $C$DW$T$59, DW_AT_language(DW_LANG_C)
+     524                            .dwattr $C$DW$T$59, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     525                            .dwattr $C$DW$T$59, DW_AT_decl_line(0x6d)
+     526                            .dwattr $C$DW$T$59, DW_AT_decl_column(0x0e)
+     527                    $C$DW$T$13      .dwtag  DW_TAG_base_type
+     528                            .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     529                            .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     530                            .dwattr $C$DW$T$13, DW_AT_byte_size(0x04)
+     531                    $C$DW$T$60      .dwtag  DW_TAG_typedef, DW_AT_name("_Uint32t")
+     532                            .dwattr $C$DW$T$60, DW_AT_type(*$C$DW$T$13)
+     533                            .dwattr $C$DW$T$60, DW_AT_language(DW_LANG_C)
+     534                            .dwattr $C$DW$T$60, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     535                            .dwattr $C$DW$T$60, DW_AT_decl_line(0xa3)
+     536                            .dwattr $C$DW$T$60, DW_AT_decl_column(0x17)
+     537                    $C$DW$T$14      .dwtag  DW_TAG_base_type
+     538                            .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     539                            .dwattr $C$DW$T$14, DW_AT_name("long long")
+     540                            .dwattr $C$DW$T$14, DW_AT_byte_size(0x08)
+     541                    $C$DW$T$61      .dwtag  DW_TAG_typedef, DW_AT_name("_Longlong")
+     542                            .dwattr $C$DW$T$61, DW_AT_type(*$C$DW$T$14)
+     543                            .dwattr $C$DW$T$61, DW_AT_language(DW_LANG_C)
+     544                            .dwattr $C$DW$T$61, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     545                            .dwattr $C$DW$T$61, DW_AT_decl_line(0x1ce)
+     546                            .dwattr $C$DW$T$61, DW_AT_decl_column(0x13)
+     547                    $C$DW$T$62      .dwtag  DW_TAG_typedef, DW_AT_name("int64_t")
+     548                            .dwattr $C$DW$T$62, DW_AT_type(*$C$DW$T$14)
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE   11
+
+     549                            .dwattr $C$DW$T$62, DW_AT_language(DW_LANG_C)
+     550                            .dwattr $C$DW$T$62, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     551                            .dwattr $C$DW$T$62, DW_AT_decl_line(0x32)
+     552                            .dwattr $C$DW$T$62, DW_AT_decl_column(0x21)
+     553                    $C$DW$T$63      .dwtag  DW_TAG_typedef, DW_AT_name("int_fast64_t")
+     554                            .dwattr $C$DW$T$63, DW_AT_type(*$C$DW$T$62)
+     555                            .dwattr $C$DW$T$63, DW_AT_language(DW_LANG_C)
+     556                            .dwattr $C$DW$T$63, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     557                            .dwattr $C$DW$T$63, DW_AT_decl_line(0x4e)
+     558                            .dwattr $C$DW$T$63, DW_AT_decl_column(0x17)
+     559                    $C$DW$T$64      .dwtag  DW_TAG_typedef, DW_AT_name("int_least64_t")
+     560                            .dwattr $C$DW$T$64, DW_AT_type(*$C$DW$T$62)
+     561                            .dwattr $C$DW$T$64, DW_AT_language(DW_LANG_C)
+     562                            .dwattr $C$DW$T$64, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     563                            .dwattr $C$DW$T$64, DW_AT_decl_line(0x40)
+     564                            .dwattr $C$DW$T$64, DW_AT_decl_column(0x17)
+     565                    $C$DW$T$65      .dwtag  DW_TAG_typedef, DW_AT_name("intmax_t")
+     566                            .dwattr $C$DW$T$65, DW_AT_type(*$C$DW$T$14)
+     567                            .dwattr $C$DW$T$65, DW_AT_language(DW_LANG_C)
+     568                            .dwattr $C$DW$T$65, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     569                            .dwattr $C$DW$T$65, DW_AT_decl_line(0x56)
+     570                            .dwattr $C$DW$T$65, DW_AT_decl_column(0x20)
+     571                    $C$DW$T$15      .dwtag  DW_TAG_base_type
+     572                            .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     573                            .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     574                            .dwattr $C$DW$T$15, DW_AT_byte_size(0x08)
+     575                    $C$DW$T$66      .dwtag  DW_TAG_typedef, DW_AT_name("_ULonglong")
+     576                            .dwattr $C$DW$T$66, DW_AT_type(*$C$DW$T$15)
+     577                            .dwattr $C$DW$T$66, DW_AT_language(DW_LANG_C)
+     578                            .dwattr $C$DW$T$66, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     579                            .dwattr $C$DW$T$66, DW_AT_decl_line(0x1cf)
+     580                            .dwattr $C$DW$T$66, DW_AT_decl_column(0x14)
+     581                    $C$DW$T$67      .dwtag  DW_TAG_typedef, DW_AT_name("uint64_t")
+     582                            .dwattr $C$DW$T$67, DW_AT_type(*$C$DW$T$15)
+     583                            .dwattr $C$DW$T$67, DW_AT_language(DW_LANG_C)
+     584                            .dwattr $C$DW$T$67, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     585                            .dwattr $C$DW$T$67, DW_AT_decl_line(0x33)
+     586                            .dwattr $C$DW$T$67, DW_AT_decl_column(0x20)
+     587                    $C$DW$T$68      .dwtag  DW_TAG_typedef, DW_AT_name("uint_fast64_t")
+     588                            .dwattr $C$DW$T$68, DW_AT_type(*$C$DW$T$67)
+     589                            .dwattr $C$DW$T$68, DW_AT_language(DW_LANG_C)
+     590                            .dwattr $C$DW$T$68, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     591                            .dwattr $C$DW$T$68, DW_AT_decl_line(0x4f)
+     592                            .dwattr $C$DW$T$68, DW_AT_decl_column(0x16)
+     593                    $C$DW$T$69      .dwtag  DW_TAG_typedef, DW_AT_name("uint_least64_t")
+     594                            .dwattr $C$DW$T$69, DW_AT_type(*$C$DW$T$67)
+     595                            .dwattr $C$DW$T$69, DW_AT_language(DW_LANG_C)
+     596                            .dwattr $C$DW$T$69, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     597                            .dwattr $C$DW$T$69, DW_AT_decl_line(0x41)
+     598                            .dwattr $C$DW$T$69, DW_AT_decl_column(0x16)
+     599                    $C$DW$T$70      .dwtag  DW_TAG_typedef, DW_AT_name("uintmax_t")
+     600                            .dwattr $C$DW$T$70, DW_AT_type(*$C$DW$T$15)
+     601                            .dwattr $C$DW$T$70, DW_AT_language(DW_LANG_C)
+     602                            .dwattr $C$DW$T$70, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     603                            .dwattr $C$DW$T$70, DW_AT_decl_line(0x57)
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE   12
+
+     604                            .dwattr $C$DW$T$70, DW_AT_decl_column(0x20)
+     605                    $C$DW$T$16      .dwtag  DW_TAG_base_type
+     606                            .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     607                            .dwattr $C$DW$T$16, DW_AT_name("float")
+     608                            .dwattr $C$DW$T$16, DW_AT_byte_size(0x04)
+     609                    $C$DW$T$17      .dwtag  DW_TAG_base_type
+     610                            .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     611                            .dwattr $C$DW$T$17, DW_AT_name("double")
+     612                            .dwattr $C$DW$T$17, DW_AT_byte_size(0x08)
+     613                    $C$DW$T$18      .dwtag  DW_TAG_base_type
+     614                            .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     615                            .dwattr $C$DW$T$18, DW_AT_name("long double")
+     616                            .dwattr $C$DW$T$18, DW_AT_byte_size(0x08)
+     617                    $C$DW$T$72      .dwtag  DW_TAG_typedef, DW_AT_name("_Sysch_t")
+     618                            .dwattr $C$DW$T$72, DW_AT_type(*$C$DW$T$6)
+     619                            .dwattr $C$DW$T$72, DW_AT_language(DW_LANG_C)
+     620                            .dwattr $C$DW$T$72, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     621                            .dwattr $C$DW$T$72, DW_AT_decl_line(0x23a)
+     622                            .dwattr $C$DW$T$72, DW_AT_decl_column(0x0e)
+     623                    $C$DW$T$73      .dwtag  DW_TAG_pointer_type
+     624                            .dwattr $C$DW$T$73, DW_AT_type(*$C$DW$T$6)
+     625                            .dwattr $C$DW$T$73, DW_AT_address_class(0x20)
+     626                    $C$DW$T$74      .dwtag  DW_TAG_typedef, DW_AT_name("__builtin_va_list")
+     627                            .dwattr $C$DW$T$74, DW_AT_type(*$C$DW$T$73)
+     628                            .dwattr $C$DW$T$74, DW_AT_language(DW_LANG_C)
+     629                            .dwattr $C$DW$T$74, DW_AT_decl_file("../delays.c")
+     630                            .dwattr $C$DW$T$74, DW_AT_decl_line(0x25)
+     631                            .dwattr $C$DW$T$74, DW_AT_decl_column(0x01)
+     632                    
+     633                    $C$DW$T$21      .dwtag  DW_TAG_structure_type
+     634                            .dwattr $C$DW$T$21, DW_AT_name("__va_list")
+     635                            .dwattr $C$DW$T$21, DW_AT_byte_size(0x04)
+     636                    $C$DW$17        .dwtag  DW_TAG_member
+     637                            .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$3)
+     638                            .dwattr $C$DW$17, DW_AT_name("__ap")
+     639                            .dwattr $C$DW$17, DW_AT_TI_symbol_name("__ap")
+     640                            .dwattr $C$DW$17, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+     641                            .dwattr $C$DW$17, DW_AT_accessibility(DW_ACCESS_public)
+     642                            .dwattr $C$DW$17, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/incl
+     643                            .dwattr $C$DW$17, DW_AT_decl_line(0x32)
+     644                            .dwattr $C$DW$17, DW_AT_decl_column(0x0c)
+     645                            .dwendtag $C$DW$T$21
+     646                    
+     647                            .dwattr $C$DW$T$21, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     648                            .dwattr $C$DW$T$21, DW_AT_decl_line(0x31)
+     649                            .dwattr $C$DW$T$21, DW_AT_decl_column(0x10)
+     650                    $C$DW$T$75      .dwtag  DW_TAG_typedef, DW_AT_name("va_list")
+     651                            .dwattr $C$DW$T$75, DW_AT_type(*$C$DW$T$21)
+     652                            .dwattr $C$DW$T$75, DW_AT_language(DW_LANG_C)
+     653                            .dwattr $C$DW$T$75, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     654                            .dwattr $C$DW$T$75, DW_AT_decl_line(0x33)
+     655                            .dwattr $C$DW$T$75, DW_AT_decl_column(0x03)
+     656                    $C$DW$T$76      .dwtag  DW_TAG_typedef, DW_AT_name("_Va_list")
+     657                            .dwattr $C$DW$T$76, DW_AT_type(*$C$DW$T$75)
+     658                            .dwattr $C$DW$T$76, DW_AT_language(DW_LANG_C)
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE   13
+
+     659                            .dwattr $C$DW$T$76, DW_AT_decl_file("/home/kike/programas/ti/ccsv6/tools/compiler/arm_5.1.6/in
+     660                            .dwattr $C$DW$T$76, DW_AT_decl_line(0x218)
+     661                            .dwattr $C$DW$T$76, DW_AT_decl_column(0x17)
+     662                            .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+     663                    
+     664                    ;***************************************************************
+     665                    ;* DWARF CIE ENTRIES                                           *
+     666                    ;***************************************************************
+     667                    
+     668                    $C$DW$CIE       .dwcie 14
+     669                            .dwcfi  cfa_register, 13
+     670                            .dwcfi  cfa_offset, 0
+     671                            .dwcfi  undefined, 0
+     672                            .dwcfi  undefined, 1
+     673                            .dwcfi  undefined, 2
+     674                            .dwcfi  undefined, 3
+     675                            .dwcfi  same_value, 4
+     676                            .dwcfi  same_value, 5
+     677                            .dwcfi  same_value, 6
+     678                            .dwcfi  same_value, 7
+     679                            .dwcfi  same_value, 8
+     680                            .dwcfi  same_value, 9
+     681                            .dwcfi  same_value, 10
+     682                            .dwcfi  same_value, 11
+     683                            .dwcfi  undefined, 12
+     684                            .dwcfi  undefined, 13
+     685                            .dwcfi  undefined, 14
+     686                            .dwcfi  undefined, 14
+     687                            .dwcfi  undefined, 7
+     688                            .dwcfi  undefined, 64
+     689                            .dwcfi  undefined, 65
+     690                            .dwcfi  undefined, 66
+     691                            .dwcfi  undefined, 67
+     692                            .dwcfi  undefined, 68
+     693                            .dwcfi  undefined, 69
+     694                            .dwcfi  undefined, 70
+     695                            .dwcfi  undefined, 71
+     696                            .dwcfi  undefined, 72
+     697                            .dwcfi  undefined, 73
+     698                            .dwcfi  undefined, 74
+     699                            .dwcfi  undefined, 75
+     700                            .dwcfi  undefined, 76
+     701                            .dwcfi  undefined, 77
+     702                            .dwcfi  undefined, 78
+     703                            .dwcfi  undefined, 79
+     704                            .dwcfi  same_value, 80
+     705                            .dwcfi  same_value, 81
+     706                            .dwcfi  same_value, 82
+     707                            .dwcfi  same_value, 83
+     708                            .dwcfi  same_value, 84
+     709                            .dwcfi  same_value, 85
+     710                            .dwcfi  same_value, 86
+     711                            .dwcfi  same_value, 87
+     712                            .dwcfi  same_value, 88
+     713                            .dwcfi  same_value, 89
+TI ARM Assembler Unix v5.1.6 Fri Oct  3 23:57:21 2014
+
+Tools Copyright (c) 1996-2014 Texas Instruments Incorporated
+delays.asm                                                           PAGE   14
+
+     714                            .dwcfi  same_value, 90
+     715                            .dwcfi  same_value, 91
+     716                            .dwcfi  same_value, 92
+     717                            .dwcfi  same_value, 93
+     718                            .dwcfi  same_value, 94
+     719                            .dwcfi  same_value, 95
+     720                            .dwendentry
+     721                            .dwendtag $C$DW$CU
+     722                    
+
+--------------------------
+Thumb2 Statistics
+--------------------------
+Number of Thumb2 ins converted to Thumb = 0 (0%)
+Number of Thumb ins in input = 35 (94%)
+Number of Thumb2 ins encoded as Thumb2 = 2 (100%)
+Number of Thumb2 ins converted to 2 OPND Thumb = 28
+
+
+No Assembly Errors, No Assembly Warnings

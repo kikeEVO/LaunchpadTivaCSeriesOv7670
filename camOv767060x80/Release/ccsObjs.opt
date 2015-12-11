@@ -1,0 +1,1 @@
+"./startup_ccs.obj" "./project0.obj" "./func.obj" "../project0_ccs.cmd" -l"libc.a" -l"/home/kike/programas/ti/tiva c series TM4C123GXL/examples/boards/ek-tm4c123gxl/project0/ccs/../../../../../driverlib/ccs/Debug/driverlib.lib" 
